@@ -122,10 +122,10 @@
 		<!-- Copies this mods source and resources! -->
 
 		<!-- Delete source in build space -->
-		<delete dir="${commonsrc.dir}/k2b6s9j/cloaked-batman"/>
+		<delete dir="${commonsrc.dir}/k2b6s9j/cloaked_batman"/>
 
 		<!-- Delete resources in build space -->
-		<delete dir="${commonsrc.dir}/assets/k2b6s9j/cloaked-batman"/>
+		<delete dir="${commonsrc.dir}/assets/k2b6s9j/cloaked_batman"/>
 		<delete file="${commonsrc.dir}/mcmod.info"/>
 
 		<!-- Copy source -->
@@ -185,16 +185,16 @@
 	<target name="package" depends="compile">
 		<echo message="Packing version}"/>
 
-		<jar destfile="dist/cloaked-batman.jar" basedir="${classes.dir}/client"/>
+		<jar destfile="dist/cloaked_batman.jar" basedir="${classes.dir}/client"/>
 
 		<echo message="Packing finished"/>
 	</target>
 
 	<target name="copy-new-code">
 		<!-- Takes the new code from the build envrironment, most likely made with Eclipse and puts it in the main source directory -->
-		<delete dir="${src.dir}/k2b6s9j/cloaked-batman"/>
-		<copy todir="${src.dir}/k2b6s9j/cloaked-batman">
-			<fileset dir="${commonsrc.dir}/k2b6s9j/cloaked-batman"/>
+		<delete dir="${src.dir}/k2b6s9j/cloaked_batman"/>
+		<copy todir="${src.dir}/k2b6s9j/cloaked_batman">
+			<fileset dir="${commonsrc.dir}/k2b6s9j/cloaked_batman"/>
 		</copy>
 	</target>
 

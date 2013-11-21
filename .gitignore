@@ -19,6 +19,7 @@ gradle-app.setting
 .classpath
 .project
 bin
+eclipse
 
 # intellij
 out

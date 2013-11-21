@@ -17,10 +17,10 @@ buildscript {
     }
 }
 
-apply plugin: 'fml'
+apply plugin: 'forge'
 
 minecraft {
-    version = '1.6.4-6.4.41.787'
+    version = '1.6.4-9.11.1.963'
     mcpVersion = '8.11'
 }
 

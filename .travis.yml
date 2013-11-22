@@ -5,4 +5,5 @@ jdk:
   - openjdk6
 before_script:
   - sudo apt-get install astyle
+  - gradle setupCIWorkspace
 script: gradle buildNeeded

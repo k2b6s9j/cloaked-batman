@@ -16,7 +16,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0")
+@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.1")
 public class cloakedBatman {
 	
 	@EventHandler

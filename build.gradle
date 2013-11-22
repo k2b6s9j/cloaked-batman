@@ -30,4 +30,4 @@ dependencies {
 }
 
 group = 'k2b6s9j.cloaked_batman'
-version = 1.0
+version = '1.0.1'

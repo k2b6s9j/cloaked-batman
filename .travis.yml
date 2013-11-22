@@ -3,7 +3,10 @@ jdk:
   - oraclejdk7
   - openjdk7
   - openjdk6
+before_install:
+  - chmod +x gradlew
+install:
+  - true
 before_script:
-  - sudo apt-get install astyle
-  - gradle setupCIWorkspace
-script: gradle buildNeeded
+  ./gradle setupCIWorkspace
+script: ./gradle buildNeeded

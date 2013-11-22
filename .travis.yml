@@ -8,5 +8,5 @@ before_install:
 install:
   - true
 before_script:
-  ./gradle setupCIWorkspace
-script: ./gradle buildNeeded
+  ./gradlew setupCIWorkspace
+script: ./gradlew buildNeeded

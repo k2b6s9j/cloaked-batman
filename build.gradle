@@ -24,5 +24,12 @@ minecraft {
     mcpVersion = '8.11'
 }
 
+dependencies {
+        compile fileTree('lib') {
+        	include '*.jar'
+        }
+        compile 'org.mcstats.forge:metrics-lite:R8-SNAPSHOT'
+}
+
 group = 'k2b6s9j.cloaked_batman'
 version = 1.0

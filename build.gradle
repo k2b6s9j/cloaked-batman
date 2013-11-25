@@ -8,8 +8,11 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'org.ajoberstar:gradle-git:0.6.3'
     }
 }
+
+import org.ajoberstar.gradle.git.tasks.*
 
 apply plugin: 'forge'
 

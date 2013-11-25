@@ -22,6 +22,18 @@ minecraft {
 
 dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
+    compile fileTree(dir: 'apis/Plugin-Metrics/mods/forge/metrics-lite/src/main/java/', include: 'org/mcstats/MetricsLite.java')
+}
+
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it).matching {
+                exclude "META-INF", "META-INF/**", "*META-INF*", "meta-inf" // no meta-inf
+                exclude "**.jar", "**/*.jar", "*.jar"  // no nested jars
+            }
+        }
+    }
 }
 
 group = 'k2b6s9j.cloaked_batman'

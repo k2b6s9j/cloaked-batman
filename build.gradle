@@ -11,13 +11,6 @@ buildscript {
     }
 }
 
-repositories {
-    maven {
-        name = "Plugin Metrics"
-        url = "http://repo.mcstats.org/content/repositories/public"
-    }
-}
-
 apply plugin: 'forge'
 
 minecraft {
@@ -26,7 +19,6 @@ minecraft {
 
 dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
-    compile 'org.mcstats.forge:metrics-lite:R8-SNAPSHOT'
 }
 
 group = 'k2b6s9j.cloaked_batman'

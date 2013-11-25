@@ -1,0 +1,3 @@
+[submodule "apis/Plugin-Metrics"]
+	path = apis/Plugin-Metrics
+	url = https://k2b6s9j@github.com/Hidendra/Plugin-Metrics.git

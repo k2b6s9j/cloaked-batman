@@ -10,8 +10,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import org.mcstats.MetricsLite;
 
-import java.io.IOException;
-
 @Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.1")
 public class cloakedBatman {
 	
@@ -26,13 +24,13 @@ public class cloakedBatman {
 	}
 	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) throws IOException {
+	public void postInit(FMLPostInitializationEvent event) throws Exception {
 		for (ModContainer mod : Loader.instance().getModList()) {
 			try {
 			    MetricsLite metrics = new MetricsLite(mod.getName(), mod.getVersion());
 			    metrics.start();
 			    FMLLog.info("Sent statistical information for %s (%s) version %s to MCStats.", mod.getModId(), mod.getName(), mod.getVersion());
-			} catch (IOException e) {
+			} catch (Exception e) {
 			    FMLLog.warning("%s (%s) failed to submit statistical information to MCStats", mod.getModId(), mod.getName());
 			}
 		}

@@ -8,6 +8,7 @@ import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import k2b6s9j.cloaked_batman.util.chickenbones.DepLoader;
 import org.mcstats.MetricsLite;
 
 @Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.1")
@@ -15,7 +16,7 @@ public class cloakedBatman {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+        DepLoader.load();
 	}
 	
 	@EventHandler

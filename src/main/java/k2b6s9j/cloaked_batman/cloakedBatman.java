@@ -14,7 +14,7 @@ import org.mcstats.MetricsLite;
 
 import java.util.logging.Logger;
 
-@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.1", dependencies="after:CodeChickenCore;")
+@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.2", dependencies="after:CodeChickenCore;")
 public class cloakedBatman {
 	
 	@EventHandler

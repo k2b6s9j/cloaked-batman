@@ -1,6 +1,5 @@
 package k2b6s9j.cloaked_batman;
 
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -11,8 +10,13 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import k2b6s9j.cloaked_batman.util.chickenbones.DepLoader;
 import org.mcstats.MetricsLite;
 
+import java.util.logging.Logger;
+
 @Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.1")
 public class cloakedBatman {
+
+    //Logger
+    public static final Logger logger = Logger.getLogger("cloaked batman");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -21,7 +25,9 @@ public class cloakedBatman {
 	
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
-		
+        logger.info("cloaked batman");
+        logger.info("Copyright Kepler Sticka-Jones 2013");
+        logger.info("http://k2b6s9j.com/projects/minecraft/cloaked-batman");
 	}
 	
 	@EventHandler
@@ -30,9 +36,9 @@ public class cloakedBatman {
 			try {
 			    MetricsLite metrics = new MetricsLite(mod.getName(), mod.getVersion());
 			    metrics.start();
-			    FMLLog.info("Sent statistical information for %s (%s) version %s to MCStats.", mod.getModId(), mod.getName(), mod.getVersion());
+			    logger.info("Sent statistical information for "+mod.getModId ()+"("+ mod.getName()+")"+" version "+mod.getVersion()+" to MCStats.");
 			} catch (Exception e) {
-			    FMLLog.warning("%s (%s) failed to submit statistical information to MCStats", mod.getModId(), mod.getName());
+			    logger.warning(mod.getModId ()+"("+mod.getName()+") failed to submit statistical information to MCStats");
 			}
 		}
 	}

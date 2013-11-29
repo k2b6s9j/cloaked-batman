@@ -10,7 +10,7 @@ import k2b6s9j.cloaked_batman.util.chickenbones.DepLoader
 import org.mcstats.MetricsLite
 import k2b6s9j.cloaked_batman.util.log.ModLogger
 
-@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.0.2", modLanguage = "scala", dependencies="after:CodeChickenCore;")
+@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.1-SNAPSHOT", modLanguage = "scala", dependencies="after:CodeChickenCore;")
 object cloakedBatman {
 	
 	@EventHandler

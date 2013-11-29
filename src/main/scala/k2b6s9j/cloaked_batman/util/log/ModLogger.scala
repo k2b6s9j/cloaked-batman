@@ -7,6 +7,7 @@ import java.util.logging.Logger
 
 object ModLogger {
     def log: Logger = Logger.getLogger("cloaked batman")
+    log.setParent(FMLLog.getLogger)
 
     def info(msg: String) {
         log.log(Level.INFO, msg)
@@ -22,9 +23,5 @@ object ModLogger {
 
     def getLogger() {
         log: Logger
-    }
-
-    static {
-        log.setParent(FMLLog.getLogger)
     }
 }

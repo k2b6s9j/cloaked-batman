@@ -13,11 +13,8 @@ import k2b6s9j.cloaked_batman.util.log.ModLogger
 import java.io.IOException
 import scala.collection.JavaConversions._
 
-@Mod(modid = "cloaked-batman", name = cloakedBatman.name, version = cloakedBatman.version, modLanguage = "scala", dependencies="after:CodeChickenCore;")
+@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.1-SNAPSHOT", modLanguage = "scala", dependencies="after:CodeChickenCore;")
 object cloakedBatman {
-
-  def name: String = "cloaked batman"
-  def version: String = "1.1-SNAPSHOT"
 
 	@EventHandler
 	def serverStarting(event: FMLServerStartingEvent) {
@@ -62,7 +59,7 @@ object cloakedBatman {
    */
   def addLoadedMod(mod: ModContainer): Unit = {
     try {
-      def metrics: Metrics = new Metrics(name, version)
+      def metrics: Metrics = new Metrics("cloaked batman", "1.1-SNAPSHOT")
 
       val modsLoaded: Graph = metrics.createGraph("Mods Loaded")
 

@@ -29,7 +29,7 @@ minecraft {
 
 dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
-    compile 'org.mcstats.forge:metrics-lite:R8-SNAPSHOT'
+    compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
 }
 
 group = 'k2b6s9j.cloaked_batman'

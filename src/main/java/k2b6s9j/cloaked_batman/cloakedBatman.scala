@@ -7,7 +7,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent
 import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import cpw.mods.fml.common.event.FMLServerStartingEvent
 import k2b6s9j.cloaked_batman.util.chickenbones.DepLoader
-import org.mcstats.MetricsLite
+import org.mcstats.Metrics
 import k2b6s9j.cloaked_batman.util.log.ModLogger
 
 @Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.1-SNAPSHOT", modLanguage = "scala", dependencies="after:CodeChickenCore;")
@@ -39,7 +39,7 @@ object cloakedBatman {
   def submitIndividualMods() {
     for (mod: ModContainer <- Loader.instance().getModList) {
       try
-        MetricsLite.metrics = new MetricsLite(mod.getName, mod.getVersion)
+        Metrics.metrics = new Metrics(mod.getName, mod.getVersion)
         metrics.start()
         ModLogger.info("Sent statistical information for " + mod.getName + " (" + mod.getModId + ")" + " version " + mod.getVersion + " to MCStats.")
       catch {

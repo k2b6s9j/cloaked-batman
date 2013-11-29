@@ -1,7 +1,7 @@
 {
-        "repo": "http://repo.mcstats.org/content/repositories/public/org/mcstats/forge/metrics-lite/R8-SNAPSHOT/",
-        "file": "metrics-lite-R8-20130817.163123-1.jar",
-        "dev": "metrics-lite-R8-20130817.163123-1.jar",
-        "class": "org.mcstats.MetricsLite",
+        "repo": "http://repo.mcstats.org/content/repositories/public/org/mcstats/forge/metrics/R8-SNAPSHOT/",
+        "file": "metrics-R8-20130817.163119-1.jar",
+        "dev": "metrics-R8-20130817.163119-1.jar",
+        "class": "org.mcstats.Metrics",
         "version": "R8-SNAPSHOT"
 }

@@ -5,7 +5,7 @@ import cpw.mods.fml.common.FMLLog;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class cloakedLogger {
+public class ModLogger {
     private static Logger log = Logger.getLogger("cloaked batman");
 
     public static void info(String msg) {

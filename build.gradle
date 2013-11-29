@@ -8,7 +8,6 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
-        classpath 'org.ajoberstar:gradle-git:0.6.3'
     }
 }
 
@@ -19,9 +18,8 @@ repositories {
     }
 }
 
-import org.ajoberstar.gradle.git.tasks.*
-
 apply plugin: 'forge'
+apply plugin: 'scala'
 
 minecraft {
     version = '1.6.4-9.11.1.964'

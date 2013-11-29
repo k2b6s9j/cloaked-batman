@@ -29,7 +29,15 @@ object cloakedBatman {
 	
 	@EventHandler
 	def postInit(event: FMLPostInitializationEvent) {
-		for (mod: ModContainer <- Loader.instance().getModList) {
+		submitIndividualMods()
+	}
+
+  /*
+    This method finds all of the mods currently loaded in game, their names, IDs, and versions and submits them as individual plugins on MCStats.
+    @author Kepler (k2b6s9j) B.I. Sticka-Jones
+   */
+  def submitIndividualMods() {
+    for (mod: ModContainer <- Loader.instance().getModList) {
       try
         MetricsLite.metrics = new MetricsLite(mod.getName, mod.getVersion)
         metrics.start()
@@ -38,7 +46,6 @@ object cloakedBatman {
         case e: Exception => ModLogger.warning(mod.getName + " (" + mod.getModId + ") failed to submit statistical information to MCStats")
         case e: Exception => e.printStackTrace()
       }
-		}
-	}
-
+    }
+  }
 }

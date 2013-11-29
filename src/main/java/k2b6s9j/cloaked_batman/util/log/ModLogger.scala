@@ -5,7 +5,7 @@ import cpw.mods.fml.common.FMLLog
 import java.util.logging.Level
 import java.util.logging.Logger
 
-class ModLogger {
+object ModLogger {
     def log: Logger = Logger.getLogger("cloaked batman")
 
     def info(msg: String) {

@@ -1,3 +1,8 @@
+apply plugin: 'forge'
+apply plugin: 'scala'
+apply plugin: 'cobertura'
+apply plugin: 'coveralls'
+
 buildscript {
     repositories {
         mavenCentral()
@@ -8,6 +13,8 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'net.saliman:gradle-cobertura-plugin:2.0.0' // coveralls plugin depends on cobertura plugin
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.1.6'
     }
 }
 
@@ -18,9 +25,6 @@ repositories {
     }
 }
 
-apply plugin: 'forge'
-apply plugin: 'scala'
-
 minecraft {
     version = '1.6.4-9.11.1.964'
 }
@@ -28,7 +32,11 @@ minecraft {
 dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
     compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
+    testCompile 'junit:junit:4.+'
 }
 
 group = 'k2b6s9j.cloaked_batman'
 version = '1.1-SNAPSHOT'
+
+cobertura.coverageFormats = ['html', 'xml']
+cobertura.coverageSourceDirs = sourceSets.main.scala.srcDirs

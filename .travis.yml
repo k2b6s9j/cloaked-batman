@@ -20,5 +20,5 @@ before_script:
 script: ./gradlew buildNeeded
 
 after_success:
-- gradle cobertura
-- gradle coveralls
+- ./gradlew cobertura
+- ./gradlew coveralls

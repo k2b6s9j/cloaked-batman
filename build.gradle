@@ -29,6 +29,8 @@ dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
     compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
     testCompile 'junit:junit:4.+'
+    testCompile 'org.eluder.coveralls:coveralls-maven-plugin:2.0.1'
+    testCompile 'org.codehaus.mojo:cobertura-maven-plugin:2.5.2'
 }
 
 tasks.withType(ScalaCompile) {

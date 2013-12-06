@@ -8,6 +8,8 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'net.saliman:gradle-cobertura-plugin:2.0.0' // coveralls plugin depends on cobertura plugin
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.1.6'
     }
 }
 
@@ -20,6 +22,10 @@ repositories {
 
 apply plugin: 'forge'
 apply plugin: 'scala'
+apply plugin: 'cobertura'
+apply plugin: 'coveralls'
+
+cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 
 minecraft {
     version = '1.6.4-9.11.1.964'
@@ -29,8 +35,6 @@ dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
     compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
     testCompile 'junit:junit:4.+'
-    testCompile 'org.eluder.coveralls:coveralls-maven-plugin:2.0.1'
-    testCompile 'org.codehaus.mojo:cobertura-maven-plugin:2.5.2'
 }
 
 tasks.withType(ScalaCompile) {

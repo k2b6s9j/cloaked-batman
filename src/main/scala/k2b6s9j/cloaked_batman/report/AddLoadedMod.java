@@ -6,13 +6,6 @@ import org.mcstats.Metrics;
 
 import java.io.IOException;
 
-/**
- * Created with IntelliJ IDEA.
- * User: kbsj
- * Date: 11/29/13
- * Time: 3:00 PM
- * To change this template use File | Settings | File Templates.
- */
 public class AddLoadedMod {
     /*
     This method finds all of the mods currently loaded in game, their name, IDs, and version and adds them to a graph on the cloaked batman page on MCStats.

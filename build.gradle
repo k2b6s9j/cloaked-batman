@@ -39,3 +39,4 @@ group = 'k2b6s9j.cloaked_batman'
 version = '1.1-SNAPSHOT'
 
 cobertura.coverageFormats = ['html', 'xml']
+cobertura.coverageSourceDirs = sourceSets.main.scala.srcDirs

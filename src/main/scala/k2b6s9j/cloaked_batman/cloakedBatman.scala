@@ -1,14 +1,13 @@
 package k2b6s9j.cloaked_batman
 
 import cpw.mods.fml.common.{Mod, Loader, ModContainer}
-
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.FMLInitializationEvent
 import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import org.mcstats.Metrics
-import k2b6s9j.cloaked_batman.util.log.ModLogger
 import k2b6s9j.cloaked_batman.report.AddLoadedMod
 import scala.collection.JavaConversions._
+import k2b6s9j.cloaked_batman.util.log.ModLogger
 
 @Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.1-SNAPSHOT", modLanguage = "scala", dependencies="required-after:CodeChickenCore;")
 class cloakedBatman {

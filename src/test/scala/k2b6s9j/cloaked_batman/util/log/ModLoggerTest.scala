@@ -6,7 +6,7 @@ import org.scalatest._
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-object ModLoggerTest extends FlatSpec with Matchers {
+class ModLoggerTest extends FlatSpec with Matchers {
   
   var msg: String = "Test Log Message"
   
@@ -30,7 +30,7 @@ object ModLoggerTest extends FlatSpec with Matchers {
     
   }
   
-  it should "return a NullPointerException if no warning message is given" in {
+  it should "return a NullPointerException if no severe message is given" in {
     
   }
   

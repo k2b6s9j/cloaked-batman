@@ -21,7 +21,7 @@ object ModLogger {
         log.log(Level.SEVERE, msg)
     }
 
-    def getLogger() {
+    def getLogger(): Logger = {
         log: Logger
     }
 }

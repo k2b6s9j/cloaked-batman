@@ -3,7 +3,7 @@ package k2b6s9j.cloaked_batman.util.log
 import org.junit.Test
 import org.junit.Assert
 
-class ModLoggerTest {
+object ModLoggerTest {
   var msg: String = "Test Message"
   
   @Test

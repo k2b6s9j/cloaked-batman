@@ -11,7 +11,7 @@ import k2b6s9j.cloaked_batman.report.AddLoadedMod
 import scala.collection.JavaConversions._
 
 @Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.1-SNAPSHOT", modLanguage = "scala", dependencies="required-after:CodeChickenCore;")
-object cloakedBatman {
+class cloakedBatman {
 
 	@EventHandler
 	def Init(event: FMLInitializationEvent) {

@@ -6,11 +6,12 @@ import cpw.mods.fml.common.ModContainer
 import org.junit.Test
 import cpw.mods.fml.common.Mod
 import k2b6s9j.cloaked_batman.util.log.ModLogger
+import org.junit.Assert
 
 class cloakedBatmanTest {
   
   @Test
-  def Init() {
+  def logModInfo() {
     
   }
   

@@ -1,27 +1,41 @@
 package k2b6s9j.cloaked_batman.util.log
 
-import org.junit.Test
 import org.junit.Assert
 import org.junit.runner.RunWith
+import org.scalatest._
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-object ModLoggerTest {
-  var msg: String = "Test Message"
+object ModLoggerTest extends FlatSpec with Matchers {
   
-  def testInfo() {
-    Assert.assertNotNull(ModLogger.info(msg))
+  var msg: String = "Test Log Message"
+  
+  "A log message" should "log an information message if given an information message" in {
+     
   }
   
-  def testWarning() {
-    Assert.assertNotNull(ModLogger.warning(msg))
-  }
+  it should "return a NullPointerException if no information message is given" in {
+    
+  } 
   
-  def testSevere() {
-    Assert.assertNotNull(ModLogger.severe(msg))
-  }
-  
-  def testGetLogger() {
+  it should "log a warning message if given a warning message" in {
     
   }
+  
+  it should "return a NullPointerException if no warning message is given" in {
+    
+  }
+  
+  it should "log a severe message if given a severe message" in {
+    
+  }
+  
+  it should "return a NullPointerException if no warning message is given" in {
+    
+  }
+  
+  "The logger" should "return itself if getLogger is called" in {
+    
+  }
+  
 }

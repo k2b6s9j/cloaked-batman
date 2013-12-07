@@ -33,7 +33,7 @@ minecraft {
 dependencies {
     compile 'org.scala-lang:scala-library:2.10.2'
     compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile 'junit:junit:4.11'
 }
 
 group = 'k2b6s9j.cloaked_batman'

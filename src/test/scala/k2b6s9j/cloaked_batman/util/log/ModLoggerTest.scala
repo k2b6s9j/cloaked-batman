@@ -7,7 +7,7 @@ import org.scalatest.junit.JUnitRunner
 import java.util.logging.Logger
 
 @RunWith(classOf[JUnitRunner])
-class ModLoggerTest extends FlatSpec with Matchers with BeforeAndAfter {
+class ModLoggerTest extends FlatSpec {
   
    var msg: String = "Test Log Message"
    //var logger =  new ModLogger() 

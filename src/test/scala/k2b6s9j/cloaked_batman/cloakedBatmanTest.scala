@@ -1,28 +1,11 @@
 package k2b6s9j.cloaked_batman
 
-import cpw.mods.fml.common.event.FMLInitializationEvent
-import cpw.mods.fml.common.event.FMLPostInitializationEvent
-import cpw.mods.fml.common.ModContainer
-import org.junit.Test
-import cpw.mods.fml.common.Mod
-import k2b6s9j.cloaked_batman.util.log.ModLogger
-import org.junit.Assert
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import org.scalatest._
+import cpw.mods.fml.common.Loader
 
-class cloakedBatmanTest {
-  
-  @Test
-  def logModInfo() {
-    
-  }
-  
-  @Test
-  def postInit() {
-    
-  }
-  
-  @Test
-  def submitIndividualMod() {
-    
-  }
+@RunWith(classOf[JUnitRunner])
+class cloakedBatmanTest extends FlatSpec with Matchers {
 
 }

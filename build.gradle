@@ -37,9 +37,9 @@ dependencies {
     testCompile 'org.scalatest:scalatest_2.10:2.0'
 }
 
-test {
-	include fileTree('src/main/*')
-} 
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.useAnt = false
+}
 
 group = 'k2b6s9j.cloaked_batman'
 version = '1.1-SNAPSHOT'

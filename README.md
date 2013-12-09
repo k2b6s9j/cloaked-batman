@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/k2b6s9j/cloaked-batman.png?label=ready)](https://waffle.io/k2b6s9j/cloaked-batman)  
 cloaked-batman 
 ==============
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/k2b6s9j/cloaked-batman/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

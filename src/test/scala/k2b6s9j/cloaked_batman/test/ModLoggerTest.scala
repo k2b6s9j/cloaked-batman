@@ -24,7 +24,7 @@ class ModLoggerTest extends FlatSpec {
   }
   
   "The logger" should "return itself if getLogger is called" in {
-    ModLogger.getLogger shouldBe ModLogger
+    ModLogger.getLogger shouldBe a ModLogger
   }
   
 }

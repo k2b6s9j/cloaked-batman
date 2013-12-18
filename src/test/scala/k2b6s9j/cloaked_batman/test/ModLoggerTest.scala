@@ -1,5 +1,7 @@
 package k2b6s9j.cloaked_batman.test
 
+import k2b6s9j.cloaked_batman.util.log.ModLogger
+
 import org.junit.runner.RunWith
 import org.scalatest._
 import org.scalatest.junit.JUnitRunner

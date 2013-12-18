@@ -8,22 +8,21 @@ import org.scalatest.junit.JUnitRunner
 class ModLoggerTest extends FlatSpec {
   
    var msg: String = "Test Log Message"
-   //var logger =  new ModLogger() 
   
   "An information log message" should "be logged if given an message" in {
-	//ModLogger.info(msg) 
+    ModLogger.info(msg) 
   }
   
   "A warning message" should "be logged if given a message" in {
-    //ModLogger.warning(msg)
+    ModLogger.warning(msg)
   }
   
   "A severe message" should "be logged if given a message" in {
-    //ModLogger.severe(msg)
+    ModLogger.severe(msg)
   }
   
   "The logger" should "return itself if getLogger is called" in {
-    //logger.getLogger shouldBe ModLogger
+    ModLogger.getLogger shouldBe ModLogger
   }
   
 }

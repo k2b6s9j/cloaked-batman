@@ -4,6 +4,11 @@ scala:
   - 2.10.2
   - 2.10.3
 
+jdk:
+  - oraclejdk7
+  - openjdk7
+  - openjdk6
+
 env:
 - TERM=dumb
 

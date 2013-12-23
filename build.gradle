@@ -11,6 +11,10 @@ buildscript {
             name = "Minecraft Forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+            name = "Sonatype Snapshots"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'

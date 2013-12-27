@@ -20,7 +20,6 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
         classpath 'net.saliman:gradle-cobertura-plugin:2.0.0' // coveralls plugin depends on cobertura plugin
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.1.6'
-        classpath 'org.batcha.gradle.plugins:git-dependencies:0.1'
     }
 }
 
@@ -35,11 +34,9 @@ repositories {
     }
 }
 
-/*
 minecraft {
     version = '1.7.2-10.12.0.0'
 }
-*/
 
 dependencies {
     compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
@@ -47,8 +44,6 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'org.scalatest:scalatest_2.10:2.0'
     testCompile 'org.scalamock:scalamock-scalatest-support_2.10:3.0.1'
-    compile ('net.minecraftforge:forge').ext.git = 'https://github.com/MinecraftForge/MinecraftForge.git'
-    testCompile ('net.minecraftforge:forge').ext.git = 'https://github.com/MinecraftForge/MinecraftForge.git'
 }
 
 tasks.withType(ScalaCompile) {

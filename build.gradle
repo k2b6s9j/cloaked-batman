@@ -35,9 +35,11 @@ repositories {
     }
 }
 
+/*
 minecraft {
     version = '1.7.2-10.12.0.0'
 }
+*/
 
 dependencies {
     compile 'org.mcstats.forge:metrics:R8-SNAPSHOT'
@@ -45,6 +47,8 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'org.scalatest:scalatest_2.10:2.0'
     testCompile 'org.scalamock:scalamock-scalatest-support_2.10:3.0.1'
+    compile ('net.minecraftforge:forge').ext.git = 'https://github.com/MinecraftForge/MinecraftForge.git'
+    testCompile ('net.minecraftforge:forge').ext.git = 'https://github.com/MinecraftForge/MinecraftForge.git'
 }
 
 tasks.withType(ScalaCompile) {

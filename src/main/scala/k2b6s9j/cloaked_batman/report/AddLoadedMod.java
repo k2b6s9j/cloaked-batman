@@ -7,6 +7,7 @@ import org.mcstats.Metrics;
 import java.io.IOException;
 
 public class AddLoadedMod {
+
     /*
     This method finds all of the mods currently loaded in game, their name, IDs, and version and adds them to a graph on the cloaked batman page on MCStats.
     @author Kepler (k2b6s9j) B.I. Sticka-Jones

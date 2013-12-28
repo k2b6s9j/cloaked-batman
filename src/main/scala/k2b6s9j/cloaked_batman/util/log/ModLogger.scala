@@ -2,8 +2,8 @@ package k2b6s9j.cloaked_batman.util.log
 
 import cpw.mods.fml.common.FMLLog
 
-import java.util.logging.Level
-import java.util.logging.Logger
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
 
 object ModLogger {
     def log: Logger = Logger.getLogger("cloaked batman")

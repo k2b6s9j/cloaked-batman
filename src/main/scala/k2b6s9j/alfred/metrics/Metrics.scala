@@ -163,6 +163,8 @@ object Metrics {
       graph.name == name
     }
 
+    def getName: String = name
+
     def onOptOut() {
     }
   }
@@ -397,6 +399,7 @@ class Metrics(private val modname: String, private val modversion: String) {
         firstGraph = false
       }
       json.append('}')
+      return
     }
     json.append('}')
     val url = new URL(BASE_URL + String.format(REPORT_URL, urlEncode(pluginName)))
@@ -432,14 +435,14 @@ class Metrics(private val modname: String, private val modversion: String) {
       }
       throw new IOException(response)
     } else {
-      if (response == "1" ||
-        response.contains("This is your first update this hour")) synchronized (graphs) {
-          for(graph <- graphs) {
-            for (plotter <- graph.getPlotters.toList) {
-              plotter.reset()
-            }
+      if (response == "1" || response.contains("This is your first update this hour")) synchronized (graphs) {
+        for(graph: Graph <- graphs.toList) {
+          for (plotter <- graph.getPlotters.toList) {
+            plotter.reset()
           }
         }
+        return
+      }
     }
   }
 

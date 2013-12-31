@@ -26,7 +26,7 @@ public class AddLoadedMod {
             });
 
             metrics.start();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             ModLogger.warning(mod.getName() + " could not be added to the mod page.");
         }

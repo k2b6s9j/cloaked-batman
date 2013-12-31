@@ -4,7 +4,7 @@ import cpw.mods.fml.common.{Mod, Loader, ModContainer}
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.FMLInitializationEvent
 import cpw.mods.fml.common.event.FMLPostInitializationEvent
-import org.mcstats.Metrics
+import k2b6s9j.alfred.metrics.Metrics
 import k2b6s9j.alfred.report.AddLoadedMod
 import scala.collection.JavaConversions._
 import k2b6s9j.alfred.util.log.ModLogger

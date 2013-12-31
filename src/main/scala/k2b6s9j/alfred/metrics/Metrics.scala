@@ -44,6 +44,7 @@ import java.util
 import cpw.mods.fml.common.gameevent.TickEvent
 import cpw.mods.fml.common.gameevent.TickEvent.ServerTickEvent
 import cpw.mods.fml.common.Mod.EventHandler
+import scala.collection.JavaConversions._
 
 object Metrics {
 
@@ -162,7 +163,7 @@ object Metrics {
       graph.name == name
     }
 
-    protected def onOptOut() {
+    def onOptOut() {
     }
   }
 
@@ -216,7 +217,7 @@ object Metrics {
 
 class Metrics(private val modname: String, private val modversion: String) {
 
-  private val graphs = Collections.synchronizedSet(util.HashSet[Graph])
+  private val graphs = Collections.synchronizedSet(new util.HashSet[Graph]())
 
   private val configuration = new Configuration(configurationFile)
 
@@ -274,8 +275,11 @@ class Metrics(private val modname: String, private val modversion: String) {
       @EventHandler
       def handleTick(event: ServerTickEvent) {
         if (stopped) return
+        // Disable Task, if it is running and the server owner decided
+        // to opt-out
         if (isOptOut) {
-          for (graph <- graphs) {
+          // Tell all plotters to stop gathering information.
+          for (graph: Graph <- graphs.toList) {
             graph.onOptOut()
           }
           stopped = true
@@ -430,8 +434,8 @@ class Metrics(private val modname: String, private val modversion: String) {
     } else {
       if (response == "1" ||
         response.contains("This is your first update this hour")) synchronized (graphs) {
-          for(graph: Graph <- graphs) {
-            for (plotter <- graph.getPlotters) {
+          for(graph <- graphs) {
+            for (plotter <- graph.getPlotters.toList) {
               plotter.reset()
             }
           }

@@ -1,22 +1,22 @@
-package k2b6s9j.cloaked_batman
+package k2b6s9j.alfred
 
 import cpw.mods.fml.common.{Mod, Loader, ModContainer}
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.FMLInitializationEvent
 import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import org.mcstats.Metrics
-import k2b6s9j.cloaked_batman.report.AddLoadedMod
+import k2b6s9j.alfred.report.AddLoadedMod
 import scala.collection.JavaConversions._
-import k2b6s9j.cloaked_batman.util.log.ModLogger
+import k2b6s9j.alfred.util.log.ModLogger
 
-@Mod(modid = "cloaked-batman", name = "cloaked batman", version = "1.1-SNAPSHOT", modLanguage = "scala", dependencies="required-after:CodeChickenCore;")
-class cloakedBatman {
+@Mod(modid = "Alfred", name = "Alfred", version = "1.0-SNAPSHOT", modLanguage = "scala", dependencies="required-after:CodeChickenCore;")
+class alfred {
 
 	@EventHandler
 	def Init(event: FMLInitializationEvent) {
-    ModLogger.info("cloaked batman")
+    ModLogger.info("Alfred")
     ModLogger.info("Copyright Kepler Sticka-Jones 2013")
-    ModLogger.info("http://k2b6s9j.com/projects/minecraft/cloaked-batman")
+    ModLogger.info("http://k2b6s9j.com/projects/minecraft/alfred")
   }
 
 	@EventHandler

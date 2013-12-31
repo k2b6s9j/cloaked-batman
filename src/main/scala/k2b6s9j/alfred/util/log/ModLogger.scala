@@ -1,10 +1,10 @@
-package k2b6s9j.cloaked_batman.util.log
+package k2b6s9j.alfred.util.log
 
 import cpw.mods.fml.common.FMLLog
 import java.util.logging.{Level, Logger}
 
 object ModLogger {
-    def log = Logger.getLogger("cloaked batman")
+    def log = Logger.getLogger("Alfred")
 
     def info(msg: String) {
         log.log(Level.INFO, msg)

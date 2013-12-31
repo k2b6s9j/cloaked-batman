@@ -1,4 +1,4 @@
-package k2b6s9j.cloaked_batman.test
+package k2b6s9j.alfred.test
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner

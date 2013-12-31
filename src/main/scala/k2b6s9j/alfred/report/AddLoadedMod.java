@@ -1,7 +1,7 @@
-package k2b6s9j.cloaked_batman.report;
+package k2b6s9j.alfred.report;
 
 import cpw.mods.fml.common.ModContainer;
-import k2b6s9j.cloaked_batman.util.log.ModLogger;
+import k2b6s9j.alfred.util.log.ModLogger;
 import org.mcstats.Metrics;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class AddLoadedMod {
    */
     public static void addLoadedMod(ModContainer mod) {
         try {
-            Metrics metrics = new Metrics("cloaked batman", "1.1-SNAPSHOT");
+            Metrics metrics = new Metrics("Alfred", "1.0-SNAPSHOT");
 
             Metrics.Graph weaponsUsedGraph = metrics.createGraph("Percentage of weapons used");
 

@@ -1,8 +1,8 @@
 package k2b6s9j.alfred.report;
 
 import cpw.mods.fml.common.ModContainer;
-import k2b6s9j.alfred.util.log.ModLogger;
 import k2b6s9j.alfred.metrics.Metrics;
+import k2b6s9j.alfred.util.log.ModLogger;
 
 import java.io.IOException;
 

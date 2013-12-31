@@ -31,35 +31,17 @@
 
 package k2b6s9j.alfred.metrics
 
-import cpw.mods.fml.common.FMLLog
-import cpw.mods.fml.common.IScheduledTickHandler
-import cpw.mods.fml.common.Loader
-import cpw.mods.fml.common.TickType
-import cpw.mods.fml.common.registry.TickRegistry
+import cpw.mods.fml.common.{FMLLog, Loader}
 import cpw.mods.fml.relauncher.Side
 import net.minecraft.server.MinecraftServer
-import net.minecraftforge.common.Configuration
-import java.io.BufferedReader
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.IOException
-import java.io.InputStreamReader
-import java.io.OutputStream
-import java.io.UnsupportedEncodingException
-import java.net.Proxy
-import java.net.URL
-import java.net.URLConnection
-import java.net.URLEncoder
-import java.util.Collections
-import java.util.EnumSet
-import java.util.HashSet
-import java.util.Iterator
-import java.util.LinkedHashSet
-import java.util.Set
-import java.util.UUID
+import java.io.{BufferedReader, ByteArrayOutputStream, File, IOException, InputStreamReader}
+import java.net.{Proxy, URL, URLConnection, URLEncoder}
+import java.util.{Collections, EnumSet, HashSet, LinkedHashSet, Set, UUID}
 import java.util.zip.GZIPOutputStream
 import Metrics._
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.reflect.BeanProperty
+import java.lang.reflect.Array
+
 //remove if not needed
 import scala.collection.JavaConversions._
 

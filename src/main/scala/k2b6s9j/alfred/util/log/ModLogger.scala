@@ -1,6 +1,5 @@
 package k2b6s9j.alfred.util.log
 
-import cpw.mods.fml.common.FMLLog
 import java.util.logging.{Level, Logger}
 
 object ModLogger {

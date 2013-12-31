@@ -27,13 +27,14 @@ class alfred {
 
   /*
     This method finds all of the mods currently loaded in game, their names, IDs, and versions and submits them as individual plugins on MCStats.
+    TODO: This will all be a configuration option for the library, to 'forcefully' posts statistics for all installed mods.
     @author Kepler (k2b6s9j) B.I. Sticka-Jones
    */
   def submitIndividualMod(mod: ModContainer): Unit = {
     try {
       val metrics: Metrics = new Metrics(mod.getName, mod.getVersion)
-      metrics.start()
-      ModLogger.info("Sent statistical information for " + mod.getName + " (" + mod.getModId + ")" + " version " + mod.getVersion + " to MCStats.")
+      //metrics.start()
+      //ModLogger.info("Sent statistical information for " + mod.getName + " (" + mod.getModId + ")" + " version " + mod.getVersion + " to MCStats.")
     }
     catch {
       case e: Exception => ModLogger.warning(mod.getName + " (" + mod.getModId + ") failed to submit statistical information to MCStats")

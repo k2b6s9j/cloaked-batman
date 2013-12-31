@@ -41,15 +41,30 @@ import java.util.zip.GZIPOutputStream
 import Metrics._
 import net.minecraftforge.common.config.Configuration
 import java.util
+import cpw.mods.fml.common.gameevent.TickEvent
+import cpw.mods.fml.common.gameevent.TickEvent.ServerTickEvent
+import cpw.mods.fml.common.Mod.EventHandler
 
 object Metrics {
 
+  /**
+   * The current revision number
+   */
   private val REVISION = 7
 
+  /**
+   * The base url of the metrics domain
+   */
   private val BASE_URL = "http://report.mcstats.org"
 
+  /**
+   * The url used to report a server's status
+   */
   private val REPORT_URL = "/plugin/%s"
 
+  /**
+   * Interval of time to ping (in minutes)
+   */
   private val PING_INTERVAL = 15
 
   def gzip(input: String): Array[Byte] = {
@@ -120,6 +135,9 @@ object Metrics {
 
   private def urlEncode(text: String): String = URLEncoder.encode(text, "UTF-8")
 
+  /**
+   * Represents a custom graph on the website
+   */
   class Graph (val name: String) {
 
     private val plotters = new LinkedHashSet[Plotter]()
@@ -148,16 +166,39 @@ object Metrics {
     }
   }
 
-  abstract class Plotter(private val name: String) {
+  /**
+   * Construct a plotter with a specific plot name
+   *
+   * @param name the name of the plotter to use, which will show up on the website
+   */
+  abstract class Plotter(val name: String) {
 
+    /**
+     * Construct a plotter with the default plot name
+     */
     def this() {
       this("Default")
     }
 
+    /**
+     * Get the current value for the plotted point. Since this function defers to an external function it may or may
+     * not return immediately thus cannot be guaranteed to be thread friendly or safe. This function can be called
+     * from any thread so care should be taken when accessing resources that need to be synchronized.
+     *
+     * @return the current value for the point to be plotted.
+     */
     def getValue: Int
 
+    /**
+     * Get the column name for the plotted point
+     *
+     * @return the plotted point's column name
+     */
     def getColumnName: String = name
 
+    /**
+     * Called after the website graphs have been updated
+     */
     def reset() {
     }
 
@@ -175,7 +216,7 @@ object Metrics {
 
 class Metrics(private val modname: String, private val modversion: String) {
 
-  private val graphs = Collections.synchronizedSet(new HashSet[Graph]())
+  private val graphs = Collections.synchronizedSet(util.HashSet[Graph])
 
   private val configuration = new Configuration(configurationFile)
 
@@ -188,7 +229,7 @@ class Metrics(private val modname: String, private val modversion: String) {
   private val debug = configuration.get(Configuration.CATEGORY_GENERAL, "debug", false, "Set to true for verbose debug")
     .getBoolean(false)
 
-  @volatile private var task: IScheduledTickHandler = null
+  @volatile private var task: ServerTickEvent = null
 
   private var stopped: Boolean = false
 
@@ -224,18 +265,16 @@ class Metrics(private val modname: String, private val modversion: String) {
     if (task != null) {
       return true
     }
-    task = new IScheduledTickHandler() {
+    task = new ServerTickEvent(TickEvent.Phase.END) {
 
       private var firstPost: Boolean = true
 
       private var thrd: Thread = null
 
-      override def tickStart(`type`: util.EnumSet[TickType], tickData: AnyRef*) {
-      }
-
-      override def tickEnd(`type`: util.EnumSet[TickType], tickData: AnyRef*) {
+      @EventHandler
+      def handleTick(event: ServerTickEvent) {
         if (stopped) return
-        if (isOptOut()) {
+        if (isOptOut) {
           for (graph <- graphs) {
             graph.onOptOut()
           }
@@ -261,16 +300,7 @@ class Metrics(private val modname: String, private val modversion: String) {
           thrd.start()
         }
       }
-
-      override def ticks(): util.EnumSet[TickType] = EnumSet.of(TickType.SERVER)
-
-      override def getLabel: String = modname + " Metrics"
-
-      override def nextTickSpacing(): Int = {
-        if (firstPost) 100 else PING_INTERVAL * 1200
-      }
     }
-    TickRegistry.registerScheduledTickHandler(task, Side.SERVER)
     true
   }
 
@@ -339,32 +369,30 @@ class Metrics(private val modname: String, private val modversion: String) {
     if (isPing) {
       appendJSONPair(json, "ping", "1")
     }
-    if (graphs.size > 0) {
-      synchronized (graphs) {
-        json.append(',')
-        json.append('"')
-        json.append("graphs")
-        json.append('"')
-        json.append(':')
-        json.append('{')
-        var firstGraph = true
-        for (graph: Graph <- graphs) {
-          val graphJson = new StringBuilder()
-          graphJson.append('{')
-          for (plotter <- graph.getPlotters) {
-            appendJSONPair(graphJson, plotter.getColumnName, java.lang.Integer.toString(plotter.getValue))
-          }
-          graphJson.append('}')
-          if (!firstGraph) {
-            json.append(',')
-          }
-          json.append(escapeJSON(graph.getName))
-          json.append(':')
-          json.append(graphJson)
-          firstGraph = false
+    if (graphs.size > 0) synchronized (graphs) {
+      json.append(',')
+      json.append('"')
+      json.append("graphs")
+      json.append('"')
+      json.append(':')
+      json.append('{')
+      var firstGraph = true
+      for (graph: Graph <- graphs) {
+        val graphJson = new StringBuilder()
+        graphJson.append('{')
+        for (plotter <- graph.getPlotters) {
+          appendJSONPair(graphJson, plotter.getColumnName, java.lang.Integer.toString(plotter.getValue))
         }
-        json.append('}')
+        graphJson.append('}')
+        if (!firstGraph) {
+          json.append(',')
+        }
+        json.append(escapeJSON(graph.getName))
+        json.append(':')
+        json.append(graphJson)
+        firstGraph = false
       }
+      json.append('}')
     }
     json.append('}')
     val url = new URL(BASE_URL + String.format(REPORT_URL, urlEncode(pluginName)))

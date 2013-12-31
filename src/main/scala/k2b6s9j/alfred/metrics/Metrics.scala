@@ -1,6 +1,8 @@
 /*
  * Copyright 2011-2013 Tyler Blair. All rights reserved.
  * Ported to Minecraft Forge by Mike Primm
+ * Rewritten in Scala by Kepler "k2b6s9j" Sticka-Jones
+ * Largely Modified by Kepler "k2b6s9j" Sticka-Jones
  *
  * Redistribution and use in source and binary forms, with or without modification, are
  * permitted provided that the following conditions are met:
@@ -26,6 +28,7 @@
  * authors and contributors and should not be interpreted as representing official policies,
  * either expressed or implied, of anybody else.
  */
+
 package k2b6s9j.alfred.metrics
 
 import cpw.mods.fml.common.FMLLog

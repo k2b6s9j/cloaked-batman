@@ -40,10 +40,8 @@ import java.util.{Collections, EnumSet, HashSet, LinkedHashSet, Set, UUID}
 import java.util.zip.GZIPOutputStream
 import Metrics._
 import scala.reflect.BeanProperty
-import java.lang.reflect.Array
-
-//remove if not needed
-import scala.collection.JavaConversions._
+import net.minecraftforge.common.config.Configuration
+import java.util
 
 object Metrics {
 
@@ -70,7 +68,7 @@ object Metrics {
         case ignore: IOException =>
       }
     }
-    baos.toByteArray()
+    baos.toByteArray
   }
 
   private def appendJSONPair(json: StringBuilder, key: String, value: String) {
@@ -118,7 +116,7 @@ object Metrics {
       }
     }
     builder.append('"')
-    builder.toString
+    builder.toString()
   }
 
   private def urlEncode(text: String): String = URLEncoder.encode(text, "UTF-8")
@@ -135,12 +133,12 @@ object Metrics {
       plotters.remove(plotter)
     }
 
-    def getPlotters(): Set[Plotter] = Collections.unmodifiableSet(plotters)
+    def getPlotters: util.Set[Plotter] = Collections.unmodifiableSet(plotters)
 
     override def hashCode(): Int = name.hashCode
 
     override def equals(`object`: Any): Boolean = {
-      if (!(`object`.isInstanceOf[Graph])) {
+      if (!`object`.isInstanceOf[Graph]) {
         return false
       }
       val graph = `object`.asInstanceOf[Graph]
@@ -157,9 +155,9 @@ object Metrics {
       this("Default")
     }
 
-    def getValue(): Int
+    def getValue: Int
 
-    def getColumnName(): String = name
+    def getColumnName: String = name
 
     def reset() {
     }
@@ -167,7 +165,7 @@ object Metrics {
     override def hashCode(): Int = getColumnName.hashCode
 
     override def equals(`object`: Any): Boolean = {
-      if (!(`object`.isInstanceOf[Plotter])) {
+      if (!`object`.isInstanceOf[Plotter]) {
         return false
       }
       val plotter = `object`.asInstanceOf[Plotter]
@@ -178,7 +176,7 @@ object Metrics {
 
 class Metrics(private val modname: String, private val modversion: String) {
 
-  private val graphs = Collections.synchronizedSet(new HashSet[Graph]())
+  private val graphs = Collections.synchronizedSet(new util.HashSet[Graph]())
 
   private val configuration = new Configuration(configurationFile)
 
@@ -233,12 +231,12 @@ class Metrics(private val modname: String, private val modversion: String) {
 
       private var thrd: Thread = null
 
-      override def tickStart(`type`: EnumSet[TickType], tickData: AnyRef*) {
+      override def tickStart(`type`: util.EnumSet[TickType], tickData: AnyRef*) {
       }
 
-      override def tickEnd(`type`: EnumSet[TickType], tickData: AnyRef*) {
+      override def tickEnd(`type`: util.EnumSet[TickType], tickData: AnyRef*) {
         if (stopped) return
-        if (isOptOut) {
+        if (isOptOut()) {
           for (graph <- graphs) {
             graph.onOptOut()
           }
@@ -265,12 +263,12 @@ class Metrics(private val modname: String, private val modversion: String) {
         }
       }
 
-      override def ticks(): EnumSet[TickType] = return EnumSet.of(TickType.SERVER)
+      override def ticks(): util.EnumSet[TickType] = EnumSet.of(TickType.SERVER)
 
-      override def getLabel(): String = return modname + " Metrics"
+      override def getLabel: String = modname + " Metrics"
 
       override def nextTickSpacing(): Int = {
-        if (firstPost) return 100 else return PING_INTERVAL * 1200
+        if (firstPost) 100 else PING_INTERVAL * 1200
       }
     }
     TickRegistry.registerScheduledTickHandler(task, Side.SERVER)
@@ -281,7 +279,7 @@ class Metrics(private val modname: String, private val modversion: String) {
     stopped = true
   }
 
-  def isOptOut(): Boolean = {
+  def isOptOut: Boolean = {
     configuration.load()
     configuration.get(Configuration.CATEGORY_GENERAL, "opt-out", false)
       .getBoolean(false)
@@ -308,9 +306,7 @@ class Metrics(private val modname: String, private val modversion: String) {
     }
   }
 
-  def getConfigFile(): File = {
-    new File(Loader.instance().getConfigDir, "PluginMetrics.cfg")
-  }
+  def getConfigFile: File = new File(Loader.instance().getConfigDir, "PluginMetrics.cfg")
 
   private def postPlugin(isPing: Boolean) {
     val pluginName = modname
@@ -377,8 +373,8 @@ class Metrics(private val modname: String, private val modversion: String) {
     val url = new URL(BASE_URL + String.format(REPORT_URL, urlEncode(pluginName)))
     var connection: URLConnection = null
     connection = if (isMineshafterPresent) url.openConnection(Proxy.NO_PROXY) else url.openConnection()
-    val uncompressed = json.toString.getBytes
-    val compressed = gzip(json.toString)
+    val uncompressed = json.toString().getBytes
+    val compressed = gzip(json.toString())
     connection.addRequestProperty("User-Agent", "MCStats/" + REVISION)
     connection.addRequestProperty("Content-Type", "application/json")
     connection.addRequestProperty("Content-Encoding", "gzip")
@@ -422,7 +418,7 @@ class Metrics(private val modname: String, private val modversion: String) {
     }
   }
 
-  private def isMineshafterPresent(): Boolean = {
+  private def isMineshafterPresent: Boolean = {
     try {
       Class.forName("mineshafter.MineServer")
       true

@@ -39,7 +39,6 @@ import java.net.{Proxy, URL, URLConnection, URLEncoder}
 import java.util.{Collections, EnumSet, HashSet, LinkedHashSet, Set, UUID}
 import java.util.zip.GZIPOutputStream
 import Metrics._
-import scala.reflect.BeanProperty
 import net.minecraftforge.common.config.Configuration
 import java.util
 
@@ -121,7 +120,7 @@ object Metrics {
 
   private def urlEncode(text: String): String = URLEncoder.encode(text, "UTF-8")
 
-  class Graph private (@BeanProperty val name: String) {
+  class Graph (val name: String) {
 
     private val plotters = new LinkedHashSet[Plotter]()
 
@@ -176,7 +175,7 @@ object Metrics {
 
 class Metrics(private val modname: String, private val modversion: String) {
 
-  private val graphs = Collections.synchronizedSet(new util.HashSet[Graph]())
+  private val graphs = Collections.synchronizedSet(new HashSet[Graph]())
 
   private val configuration = new Configuration(configurationFile)
 
@@ -349,9 +348,7 @@ class Metrics(private val modname: String, private val modversion: String) {
         json.append(':')
         json.append('{')
         var firstGraph = true
-        val iter = graphs.iterator()
-        while (iter.hasNext) {
-          val graph = iter.next()
+        for (graph: Graph <- graphs) {
           val graphJson = new StringBuilder()
           graphJson.append('{')
           for (plotter <- graph.getPlotters) {
@@ -404,17 +401,13 @@ class Metrics(private val modname: String, private val modversion: String) {
       throw new IOException(response)
     } else {
       if (response == "1" ||
-        response.contains("This is your first update this hour")) {
-        synchronized (graphs) {
-          val iter = graphs.iterator()
-          while (iter.hasNext) {
-            val graph = iter.next()
+        response.contains("This is your first update this hour")) synchronized (graphs) {
+          for(graph: Graph <- graphs) {
             for (plotter <- graph.getPlotters) {
               plotter.reset()
             }
           }
         }
-      }
     }
   }
 

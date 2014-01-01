@@ -8,8 +8,8 @@ import k2b6s9j.alfred.report.AddLoadedMod
 import scala.collection.JavaConversions._
 import k2b6s9j.alfred.util.log.ModLogger
 
-@Mod(modid = "Alfred", name = "Alfred", version = "1.0-SNAPSHOT", modLanguage = "scala", dependencies="required-after:CodeChickenCore;")
-class alfred {
+@Mod(modid = "Alfred", name = "Alfred", version = "1.0-SNAPSHOT", modLanguage = "scala")
+object alfred {
 
 	@EventHandler
 	def Init(event: FMLInitializationEvent) {
@@ -33,8 +33,8 @@ class alfred {
   def submitIndividualMod(mod: ModContainer): Unit = {
     try {
       val metrics: Metrics = new Metrics(mod.getName, mod.getVersion)
-      //metrics.start()
-      //ModLogger.info("Sent statistical information for " + mod.getName + " (" + mod.getModId + ")" + " version " + mod.getVersion + " to MCStats.")
+      metrics.start()
+      ModLogger.info("Sent statistical information for " + mod.getName + " (" + mod.getModId + ")" + " version " + mod.getVersion + " to MCStats.")
     }
     catch {
       case e: Exception => ModLogger.warning(mod.getName + " (" + mod.getModId + ") failed to submit statistical information to MCStats")
